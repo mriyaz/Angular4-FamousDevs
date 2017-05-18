@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h2>Top developers in your area</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-md-offset-3">
+      <div class="form-inline">
+        <input placeholder="Location Name" #place class="form-control">
+        <input placeholder="Language e.g. Java" #language class="form-control">
+        <button class="btn btn-primary" (click)="onSearch(place.value,language.value)">Search</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <p style="color:red;" *ngIf="error_msg">{{error_msg}}</p>
+    <!-- if user selected, grid size is col-md-9 else it is col-md-12 -->
+    <div [ngClass]="{'col-md-9':selected,'col-md-12':!selected}">
+      <div class="user col-md-2 text-center" *ngFor="let dev of results" (click)="getDetails(dev.login)">
+        <div class="img_container"><img src="{{dev.avatar_url}}" class="img-circle" alt="" width="100" height="100"></div>
+        <div class="details_container"><a href="{{dev.html_url}}" target="_blank" class="login_name">{{dev.login}}</a></div>
+      </div>
+    </div>
+    <!-- if user selected, show div -->
+    <div *ngIf="results.length && selected" class="col-md-3">
+      <div class="box text-center">
+        <button class="btn btn-sm btn-warning" (click)="selected = !selected">Back</button>
+        <hr>
+        <img src="{{selectedUser.avatar_url}}" class="img-responsive img-circle">
+        <div class="details">
+          <div *ngIf="selectedUser.name"><a href="{{ selectedUser.html_url }}" target="_blank"><h3>{{ selectedUser.name }} </h3></a></div>
+          <hr>
+          <div *ngIf="selectedUser.email">Email: {{ selectedUser.email }}</div>
+          <hr>
+          <div *ngIf="selectedUser.location">Location: {{ selectedUser.location }}</div>
+          <hr>
+          <div *ngIf="selectedUser.bio">Bio: {{ selectedUser.bio }}</div>
+          <hr>
+          <div *ngIf="selectedUser.updated_at">Last Seen: {{ selectedUser.updated_at | date }}</div>
+          <hr>
+          <div *ngIf="selectedUser.public_repos">Repos: {{ selectedUser.public_repos }}</div>
+          <hr>
+          <div *ngIf="selectedUser.public_gists">Gists: {{ selectedUser.public_gists }}</div>
+          <hr>
+          <div *ngIf="selectedUser.followers">Followers: {{ selectedUser.followers }}</div>
+          <hr>
+          <div *ngIf="selectedUser.created_at">Joined github: {{ selectedUser.created_at | date }}</div>
+          <hr>
+          <button class="btn btn-sm btn-warning" (click)="selected = !selected">Back</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

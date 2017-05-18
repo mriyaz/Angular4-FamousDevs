@@ -4,17 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { SearchDevsComponent } from './search-devs/search-devs.component';
+import {SearchGithubDevsService} from './search-github-devs.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchDevsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [SearchGithubDevsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,30 @@
+.input {
+  border-radius: 0;
+  outline: none;
+}
+.input:hover {
+  border: 1px solid #9b59b6;
+}
+
+.user {
+  border: 1px solid #9b59b6;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color:#e8efce;
+}
+
+.user:hover {
+  box-shadow: 1px 2px 3px #ccc;
+}
+
+.box {
+  border: 1px solid #9b59b6;
+  padding: 2em;
+  background-color:#d2ea79;
+}
+
+.box > .details {
+  margin-top: 1em;
+  font-family: monospace;
+}
